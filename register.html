@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>{{ lang.register }} - {{ lang.app_name }}</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial;
+    background:#0f172a;
+    color:white;
+    display:flex;
+}
+
+/* Sidebar */
+.sidebar{
+    width:220px;
+    height:100vh;
+    background:#020617;
+    padding:20px;
+}
+
+.logo{
+    font-size:22px;
+    font-weight:800;
+    color:#22c55e;
+    margin-bottom:30px;
+}
+
+.sidebar a{
+    display:block;
+    padding:12px;
+    margin:8px 0;
+    text-decoration:none;
+    color:#cbd5e1;
+    border-radius:6px;
+}
+
+.sidebar a:hover{
+    background:#1e293b;
+}
+
+/* Main */
+.main{
+    flex:1;
+    padding:30px;
+}
+
+/* Header */
+.header{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:30px;
+}
+
+.lang a{
+    color:#22c55e;
+    text-decoration:none;
+    margin-left:10px;
+    font-weight:bold;
+}
+
+/* Card */
+.card{
+    background:#1e293b;
+    padding:35px;
+    width:400px;
+    border-radius:12px;
+    margin:auto;
+    box-shadow:0 8px 20px rgba(0,0,0,0.5);
+}
+
+.card h2{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+/* Inputs */
+input{
+    width:100%;
+    padding:12px;
+    margin-top:8px;
+    margin-bottom:18px;
+    border:none;
+    border-radius:6px;
+    background:#0f172a;
+    color:white;
+}
+
+/* Button */
+button{
+    width:100%;
+    background:#22c55e;
+    color:black;
+    padding:12px;
+    border:none;
+    border-radius:6px;
+    font-size:16px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#16a34a;
+}
+
+/* Back */
+.back-link{
+    display:block;
+    margin-top:20px;
+    text-align:center;
+    color:#94a3b8;
+    text-decoration:none;
+}
+
+.back-link:hover{
+    color:white;
+}
+</style>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+    <div class="logo">{{ lang.app_name }}</div>
+
+    <a href="/">{{ lang.login }}</a>
+    <a href="/register" style="background:#22c55e;color:black;">{{ lang.register }}</a>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+    <!-- HEADER -->
+    <div class="header">
+        <h2>{{ lang.register }}</h2>
+
+        <div class="lang">
+            <a href="/setlang/en">EN</a> |
+            <a href="/setlang/hi">हिंदी</a>
+        </div>
+    </div>
+
+    <!-- CARD -->
+    <div class="card">
+
+        <h2>{{ lang.create_account }}</h2>
+
+        <form method="POST">
+
+            <label>{{ lang.username }}</label>
+            <input type="text" name="username" placeholder="{{ lang.username }}" required>
+
+            <label>{{ lang.password }}</label>
+            <input type="password" name="password" placeholder="{{ lang.password }}" required>
+
+            <button type="submit">{{ lang.register }}</button>
+
+        </form>
+
+        <a href="/" class="back-link">{{ lang.back_login }}</a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>{{ lang.view_report }} - SharmSetu</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial;
+    background:#0f172a;
+    color:white;
+    display:flex;
+}
+
+/* Sidebar */
+.sidebar{
+    width:220px;
+    height:100vh;
+    background:#020617;
+    padding:20px;
+}
+
+.logo{
+    font-size:24px;
+    font-weight:800;
+    color:#22c55e;
+    margin-bottom:30px;
+}
+
+.sidebar a{
+    display:block;
+    padding:12px;
+    margin:8px 0;
+    text-decoration:none;
+    color:#cbd5e1;
+    border-radius:6px;
+}
+
+.sidebar a:hover{
+    background:#1e293b;
+}
+
+/* Main */
+.main{
+    flex:1;
+    padding:30px;
+}
+
+/* Header */
+.header{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:15px;
+}
+
+.lang a{
+    color:#22c55e;
+    text-decoration:none;
+    margin-left:10px;
+    font-weight:bold;
+}
+
+/* Card */
+.card{
+    background:#1e293b;
+    padding:25px;
+    border-radius:12px;
+}
+
+/* Table */
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+    border-radius:10px;
+    overflow:hidden;
+}
+
+th, td{
+    padding:14px;
+    text-align:left;
+}
+
+th{
+    background:#334155;
+}
+
+tr:nth-child(even){
+    background:#0f172a;
+}
+
+tr:hover{
+    background:#334155;
+}
+
+/* Back button */
+.back-btn{
+    display:inline-block;
+    margin-top:20px;
+    padding:10px 18px;
+    background:#22c55e;
+    color:black;
+    text-decoration:none;
+    border-radius:6px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+    <div class="logo">{{ lang.app_name }}</div>
+
+    <a href="/dashboard">{{ lang.dashboard }}</a>
+    <a href="/add_worker">{{ lang.add_worker }}</a>
+    <a href="/attendance">{{ lang.mark_attendance }}</a>
+    <a href="/report" style="background:#22c55e;color:black;">{{ lang.view_report }}</a>
+    <a href="/logout">{{ lang.logout }}</a>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+    <!-- HEADER -->
+    <div class="header">
+        <div>
+            <h2>📊 {{ lang.report_title }}</h2>
+            <p>{{ lang.tagline }}</p>
+        </div>
+
+        <div class="lang">
+            <a href="/setlang/en">EN</a> |
+            <a href="/setlang/hi">हिंदी</a>
+        </div>
+    </div>
+
+    <!-- CARD -->
+    <div class="card">
+
+        <table>
+            <tr>
+                <th>{{ lang.name }}</th>
+                <th>{{ lang.present_today }}</th>
+                <th>{{ lang.wage }}</th>
+                <th>{{ lang.wage_today }}</th>
+            </tr>
+
+            {% for row in data %}
+            <tr>
+                <td>{{row[0]}}</td>
+                <td>{{row[1]}}</td>
+                <td>₹ {{row[2]}}</td>
+                <td>₹ {{row[3]}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+    </div>
+
+    <a href="/dashboard" class="back-btn">⬅ {{ lang.dashboard }}</a>
+
+</div>
+
+</body>
+</html>

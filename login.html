@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>{{ lang.login_title }}</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    background: radial-gradient(circle at top, #1e293b, #020617);
+    color:white;
+}
+
+/* LEFT */
+.left{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    padding:60px;
+    border-right:1px solid rgba(255,255,255,0.08);
+}
+
+/* LOGO */
+.logo{
+    margin-bottom:20px;
+    transition:0.4s;
+}
+
+.logo svg{
+    filter: drop-shadow(0px 5px 15px rgba(255,255,255,0.15));
+    transition:0.4s;
+}
+
+.logo:hover svg{
+    transform:scale(1.08);
+    filter: drop-shadow(0px 8px 25px rgba(34,197,94,0.6));
+}
+
+/* BRAND */
+.brand{
+    font-size:58px;
+    font-weight:800;
+    background:linear-gradient(90deg,#22c55e,#4ade80,#22c55e);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    letter-spacing:3px;
+}
+
+/* QUOTE */
+.quote{
+    margin-top:20px;
+    font-size:18px;
+    color:#cbd5e1;
+    text-align:center;
+    max-width:420px;
+    line-height:1.6;
+    border-left:4px solid #22c55e;
+    padding-left:15px;
+    font-style:italic;
+}
+
+/* RIGHT */
+.right{
+    flex:1;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* LOGIN CARD */
+.login-box{
+    width:380px;
+    padding:40px;
+    background:#1e293b;
+    border-radius:16px;
+    box-shadow:0 10px 40px rgba(0,0,0,0.6);
+}
+
+/* TITLE */
+.login-box h2{
+    text-align:center;
+    margin-bottom:20px;
+    color:#22c55e;
+}
+
+/* INPUT */
+.input-box{
+    margin-bottom:18px;
+}
+
+.input-box label{
+    font-size:13px;
+    color:#cbd5e1;
+}
+
+.input-box input{
+    width:100%;
+    padding:12px;
+    margin-top:5px;
+    border:none;
+    border-radius:8px;
+    background:#0f172a;
+    color:white;
+}
+
+/* BUTTONS */
+.login-btn{
+    width:100%;
+    padding:12px;
+    background:#22c55e;
+    border:none;
+    border-radius:8px;
+    font-size:16px;
+    font-weight:600;
+    color:black;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.login-btn:hover{
+    background:#16a34a;
+}
+
+.register-btn{
+    width:100%;
+    padding:10px;
+    margin-top:15px;
+    background:transparent;
+    border:1px solid #22c55e;
+    border-radius:8px;
+    color:#22c55e;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.register-btn:hover{
+    background:#22c55e;
+    color:black;
+}
+
+/* ERROR */
+.error{
+    background:#ef4444;
+    padding:8px;
+    border-radius:6px;
+    margin-bottom:12px;
+    font-size:14px;
+    text-align:center;
+}
+
+/* 🌐 Language Switch */
+.lang-switch{
+    position:absolute;
+    top:20px;
+    right:25px;
+}
+
+.lang-switch a{
+    color:#22c55e;
+    text-decoration:none;
+    margin-left:10px;
+    font-weight:600;
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🌐 Language Switch -->
+<div class="lang-switch">
+    <a href="/setlang/en">EN</a> |
+    <a href="/setlang/hi">हिंदी</a>
+</div>
+
+<!-- LEFT -->
+<div class="left">
+
+    <!-- LOGO -->
+    <div class="logo">
+        <!-- SAME SVG -->
+        <svg width="90" height="90" viewBox="0 0 100 100">
+            <defs>
+                <linearGradient id="metal" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#e5e7eb"/>
+                    <stop offset="50%" stop-color="#9ca3af"/>
+                    <stop offset="100%" stop-color="#f9fafb"/>
+                </linearGradient>
+            </defs>
+
+            <polygon points="20,80 50,90 80,80 50,70" fill="#22c55e"/>
+            <rect x="42" y="25" width="16" height="45" fill="url(#metal)" rx="2"/>
+            <rect x="28" y="40" width="10" height="30" fill="url(#metal)" rx="2"/>
+            <rect x="62" y="40" width="10" height="30" fill="url(#metal)" rx="2"/>
+
+            <line x1="50" y1="25" x2="50" y2="70" stroke="#22c55e" stroke-width="1"/>
+            <line x1="33" y1="40" x2="33" y2="70" stroke="#22c55e" stroke-width="1"/>
+            <line x1="67" y1="40" x2="67" y2="70" stroke="#22c55e" stroke-width="1"/>
+        </svg>
+    </div>
+
+    <!-- 🔥 BILINGUAL BRAND -->
+    <div class="brand">
+        {{ lang.app_name }}
+    </div>
+
+    <!-- 🔥 BILINGUAL TAGLINE -->
+    <div class="quote">
+        "{{ lang.tagline }}"
+    </div>
+
+</div>
+
+<!-- RIGHT -->
+<div class="right">
+
+    <div class="login-box">
+
+        <h2>{{ lang.login }}</h2>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="error">
+                    {{ messages[0] }}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <form method="POST">
+            <div class="input-box">
+                <label>{{ lang.username }}</label>
+                <input type="text" name="username" required>
+            </div>
+
+            <div class="input-box">
+                <label>{{ lang.password }}</label>
+                <input type="password" name="password" required>
+            </div>
+
+            <button type="submit" class="login-btn">
+                {{ lang.login }}
+            </button>
+        </form>
+
+        <p style="margin-top:15px; text-align:center; font-size:13px;">
+            {{ lang.no_account }}
+        </p>
+
+        <a href="/register">
+            <button type="button" class="register-btn">
+                {{ lang.create_account }}
+            </button>
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

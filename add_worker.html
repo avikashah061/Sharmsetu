@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>{{ lang.add_worker }} - SharmSetu</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial;
+    background:#0f172a;
+    color:white;
+    display:flex;
+}
+
+/* Sidebar */
+.sidebar{
+    width:220px;
+    height:100vh;
+    background:#020617;
+    padding:20px;
+}
+
+.logo{
+    font-size:24px;
+    font-weight:800;
+    color:#22c55e;
+    margin-bottom:30px;
+}
+
+.sidebar a{
+    display:block;
+    padding:12px;
+    margin:8px 0;
+    text-decoration:none;
+    color:#cbd5e1;
+    border-radius:6px;
+}
+
+.sidebar a:hover{
+    background:#1e293b;
+}
+
+/* Main */
+.main{
+    flex:1;
+    padding:30px;
+}
+
+/* Header */
+.header{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:20px;
+}
+
+.lang a{
+    color:#22c55e;
+    text-decoration:none;
+    margin-left:10px;
+    font-weight:bold;
+}
+
+/* Card */
+.card{
+    background:#1e293b;
+    padding:30px;
+    width:420px;
+    border-radius:12px;
+    margin:auto;
+}
+
+.card h2{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+/* Inputs */
+input, select{
+    width:100%;
+    padding:10px;
+    margin-top:8px;
+    margin-bottom:18px;
+    border:none;
+    border-radius:6px;
+    background:#0f172a;
+    color:white;
+}
+
+/* Button */
+button{
+    width:100%;
+    background:#22c55e;
+    color:black;
+    padding:12px;
+    border:none;
+    border-radius:6px;
+    font-size:16px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#16a34a;
+}
+</style>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+    <div class="logo">{{ lang.app_name }}</div>
+
+    <a href="/dashboard">{{ lang.dashboard }}</a>
+    <a href="/add_worker" style="background:#22c55e;color:black;">{{ lang.add_worker }}</a>
+    <a href="/attendance">{{ lang.mark_attendance }}</a>
+    <a href="/report">{{ lang.view_report }}</a>
+    <a href="/logout">{{ lang.logout }}</a>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+    <!-- HEADER -->
+    <div class="header">
+        <h2>{{ lang.add_worker }}</h2>
+
+        <div class="lang">
+            <a href="/setlang/en">EN</a> |
+            <a href="/setlang/hi">हिंदी</a>
+        </div>
+    </div>
+
+    <!-- CARD -->
+    <div class="card">
+
+        <h2>{{ lang.add_worker }}</h2>
+
+        <form action="/add_worker" method="post">
+
+            <label>{{ lang.worker_name }}</label>
+            <input type="text" name="name" required>
+
+            <label>{{ lang.phone }}</label>
+            <input type="text" name="phone" required>
+
+            <label>{{ lang.work_type }}</label>
+            <select name="work_type" required>
+
+                <option value="">{{ lang.select }}</option>
+
+                <option value="Mason">{{ lang.mason }}</option>
+                <option value="Helper">{{ lang.helper }}</option>
+                <option value="Electrician">{{ lang.electrician }}</option>
+                <option value="Painter">{{ lang.painter }}</option>
+                <option value="Plumber">{{ lang.plumber }}</option>
+
+            </select>
+
+            <label>{{ lang.daily_wage }} (₹)</label>
+            <input type="number" name="wage" required>
+
+            <button type="submit">{{ lang.submit }}</button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>

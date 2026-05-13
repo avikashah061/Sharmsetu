@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>{{ lang.mark_attendance }} - SharmSetu</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial;
+    background:#0f172a;
+    color:white;
+    display:flex;
+}
+
+/* Sidebar */
+.sidebar{
+    width:220px;
+    height:100vh;
+    background:#020617;
+    padding:20px;
+}
+
+.logo{
+    font-size:24px;
+    font-weight:800;
+    color:#22c55e;
+    margin-bottom:30px;
+}
+
+.sidebar a{
+    display:block;
+    padding:12px;
+    margin:8px 0;
+    text-decoration:none;
+    color:#cbd5e1;
+    border-radius:6px;
+}
+
+.sidebar a:hover{
+    background:#1e293b;
+}
+
+/* Main */
+.main{
+    flex:1;
+    padding:30px;
+}
+
+/* Header */
+.header{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:20px;
+}
+
+.lang a{
+    color:#22c55e;
+    text-decoration:none;
+    margin-left:10px;
+    font-weight:bold;
+}
+
+/* Card */
+.card{
+    background:#1e293b;
+    padding:30px;
+    width:420px;
+    border-radius:12px;
+    margin:auto;
+}
+
+/* Inputs */
+input, select{
+    width:100%;
+    padding:10px;
+    margin-top:8px;
+    margin-bottom:18px;
+    border:none;
+    border-radius:6px;
+    background:#0f172a;
+    color:white;
+}
+
+/* Button */
+button{
+    width:100%;
+    background:#22c55e;
+    color:black;
+    padding:12px;
+    border:none;
+    border-radius:6px;
+    font-size:16px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#16a34a;
+}
+</style>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+    <div class="logo">{{ lang.app_name }}</div>
+
+    <a href="/dashboard">{{ lang.dashboard }}</a>
+    <a href="/add_worker">{{ lang.add_worker }}</a>
+    <a href="/attendance" style="background:#22c55e;color:black;">{{ lang.mark_attendance }}</a>
+    <a href="/report">{{ lang.view_report }}</a>
+    <a href="/logout">{{ lang.logout }}</a>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+    <!-- HEADER -->
+    <div class="header">
+        <h2>{{ lang.mark_attendance }}</h2>
+
+        <div class="lang">
+            <a href="/setlang/en">EN</a> |
+            <a href="/setlang/hi">हिंदी</a>
+        </div>
+    </div>
+
+    <!-- CARD -->
+    <div class="card">
+
+        <form method="POST">
+
+            <label>{{ lang.name }}</label>
+            <select name="worker_id" required>
+                {% for worker in workers %}
+                    <option value="{{worker['id']}}">
+                        {{worker['name']}}
+                    </option>
+                {% endfor %}
+            </select>
+
+            <label>{{ lang.select_date }}</label>
+            <input type="date" name="date" id="dateField" required>
+
+            <label>{{ lang.status }}</label>
+            <select name="status">
+                <option value="Present">{{ lang.present }}</option>
+                <option value="Absent">{{ lang.absent }}</option>
+            </select>
+
+            <button type="submit">{{ lang.submit }}</button>
+
+        </form>
+
+    </div>
+
+</div>
+
+<script>
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById("dateField").value = today;
+</script>
+
+</body>
+</html>
